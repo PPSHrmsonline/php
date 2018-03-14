@@ -108,11 +108,11 @@ ENV PHP_CFLAGS="-fstack-protector-strong -fpic -fpie -O2"
 ENV PHP_CPPFLAGS="$PHP_CFLAGS"
 ENV PHP_LDFLAGS="-Wl,-O1 -Wl,--hash-style=both -pie"
 
-ENV GPG_KEYS 1729F83938DA44E27BA0F4D3DBDB397470D12172 B1B44D8F021E4E2D6021E995DC9FF8D3EE5AF27F
+ENV GPG_KEYS 1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763 6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3
 
-ENV PHP_VERSION 7.2.3
-ENV PHP_URL="https://secure.php.net/get/php-7.2.3.tar.xz/from/this/mirror" PHP_ASC_URL="https://secure.php.net/get/php-7.2.3.tar.xz.asc/from/this/mirror"
-ENV PHP_SHA256="b3a94f1b562f413c0b96f54bc309706d83b29ac65d9b172bc7ed9fb40a5e651f" PHP_MD5=""
+ENV PHP_VERSION 7.0.28
+ENV PHP_URL="https://secure.php.net/get/php-7.0.28.tar.xz/from/this/mirror" PHP_ASC_URL="https://secure.php.net/get/php-7.0.28.tar.xz.asc/from/this/mirror"
+ENV PHP_SHA256="e738ffce2c30bc0e84be9446af86bef0a0607d321f1a3d04bbfe2402fb5f6de0" PHP_MD5=""
 
 RUN set -xe; \
 	\
@@ -141,15 +141,15 @@ RUN set -xe; \
 		echo "$PHP_MD5 *php.tar.xz" | md5sum -c -; \
 	fi; \
 	\
-	if [ -n "$PHP_ASC_URL" ]; then \
-		wget -O php.tar.xz.asc "$PHP_ASC_URL"; \
-		export GNUPGHOME="$(mktemp -d)"; \
-		for key in $GPG_KEYS; do \
-			gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
-		done; \
-		gpg --batch --verify php.tar.xz.asc php.tar.xz; \
-		rm -rf "$GNUPGHOME"; \
-	fi; \
+	# if [ -n "$PHP_ASC_URL" ]; then \
+	# 	wget -O php.tar.xz.asc "$PHP_ASC_URL"; \
+	# 	export GNUPGHOME="$(mktemp -d)"; \
+	# 	for key in $GPG_KEYS; do \
+	# 		gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key"; \
+	# 	done; \
+	# 	gpg --batch --verify php.tar.xz.asc php.tar.xz; \
+	# 	rm -rf "$GNUPGHOME"; \
+	# fi; \
 	\
 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $fetchDeps
 
@@ -199,9 +199,9 @@ RUN set -eux; \
 # --enable-mysqlnd is included here because it's harder to compile after the fact than extensions are (since it's a plugin for several extensions, not an extension in itself)
 		--enable-mysqlnd \
 # https://wiki.php.net/rfc/argon2_password_hash (7.2+)
-		--with-password-argon2 \
+		# --with-password-argon2 \
 # https://wiki.php.net/rfc/libsodium
-		--with-sodium \
+		# --with-sodium \
 		\
 		--with-curl \
 		--with-libedit \
