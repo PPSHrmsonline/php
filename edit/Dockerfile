@@ -6,6 +6,7 @@ RUN set -x \
         && apt-get update \
         && apt-get dist-upgrade -y \
         && apt-get install --no-install-recommends -y \
+            ca-certificates \
             git \
             neovim \
         && apt-get clean \
