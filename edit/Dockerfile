@@ -10,7 +10,8 @@ RUN set -x \
             git \
             neovim \
         && apt-get clean \
-        && rm -rf /var/lib/apt/lists/*
+        && rm -rf /var/lib/apt/lists/* \
+        && alias ls='ls --color=auto'
 
 RUN set -x \
         && mkdir -p /var/www/.local \
