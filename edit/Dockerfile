@@ -10,9 +10,9 @@ RUN set -x \
             git \
             neovim \
         && apt-get clean \
-        && rm -rf /var/lib/apt/lists/* \
-        && alias ls='ls --color=auto'
+        && rm -rf /var/lib/apt/lists/*
 
+COPY .bashrc /var/www/.bashrc
 RUN set -x \
         && mkdir -p /var/www/.local \
         && chown -R www-data /var/www/.local
