@@ -12,8 +12,9 @@ RUN set -x \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 
-COPY .bashrc /var/www/.bashrc
+#COPY .bashrc /var/www/.bashrc
 RUN set -x \
+        && cp /etc/skel/.bashrc /var/www/.bashrc \
         && mkdir -p /var/www/.local \
         && chown -R www-data /var/www/.local
 
