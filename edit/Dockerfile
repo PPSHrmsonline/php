@@ -12,10 +12,10 @@ RUN set -x \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 
-#COPY .bashrc /var/www/.bashrc
 RUN set -x \
         && mkdir -p /var/www/.local \
         && cp /etc/skel/.bashrc /var/www/.bashrc \
+        $$ sed -i 's/#force_color_prompt=yes/force_color_prompt=yes'/g' /var/www/.bashrc
         && chown -R www-data: /var/www
 
 USER www-data
