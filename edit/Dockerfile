@@ -16,6 +16,6 @@ RUN set -x \
 RUN set -x \
         && mkdir -p /var/www/.local \
         && cp /etc/skel/.bashrc /var/www/.bashrc \
-        && chown -R www-data /var/www
+        && chown -R www-data: /var/www
 
 USER www-data
