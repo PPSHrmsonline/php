@@ -1,4 +1,4 @@
-FROM python:alpine
+FROM python:alpine3.7
 
 LABEL maintainer="Eakkapat Pattarathamrong (overbid@gmail.com)"
 
