@@ -37,7 +37,7 @@ RUN set -x \
 RUN set -x \
         && echo "Asia/Bangkok" | tee /etc/timezone \
         && dpkg-reconfigure -f noninteractive tzdata \
-        && echo '#' | tee /etc/apache2/ports.conf \
+        # && echo '#' | tee /etc/apache2/ports.conf \
         && echo 'date.timezone = "Asia/Bangkok"' | tee /usr/local/etc/php/conf.d/locale.ini \
         && echo 'default_charset = "utf-8"' | tee -a /usr/local/etc/php/conf.d/locale.ini \
         && echo "cgi.fix_pathinfo = 0" | tee -a /usr/local/etc/php/conf.d/file.ini \
