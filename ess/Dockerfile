@@ -43,6 +43,7 @@ RUN set -x \
                 headers \
                 http2 \
                 include \
+                proxy_fcgi \
                 rewrite \
                 setenvif \
                 ssl \
