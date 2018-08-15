@@ -10,6 +10,7 @@ RUN set -x \
                 libaio-dev \
                 libmcrypt-dev \
                 zlib1g-dev \
+                vim \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
 
