@@ -1,4 +1,4 @@
-FROM overbid/7.0-apache
+FROM peopleplus/php
 
 ENV LD_LIBRARY_PATH /opt/oracle/instantclient_12_2
 ENV ORACLE_HOME /opt/oracle/instantclient_12_2
