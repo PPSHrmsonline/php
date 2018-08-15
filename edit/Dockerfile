@@ -7,6 +7,7 @@ RUN set -x \
         && apt-get install --no-install-recommends -y \
             ca-certificates \
             git \
+            vim \
             neovim \
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
