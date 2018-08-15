@@ -1,7 +1,5 @@
 FROM debian:unstable-slim
 
-LABEL maintainer="Eakkapat Pattarathamrong (overbid@gmail.com)"
-
 RUN set -x \
         && apt-get update \
         && apt-get dist-upgrade -y \
